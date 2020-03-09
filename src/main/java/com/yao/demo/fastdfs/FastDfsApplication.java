@@ -19,22 +19,6 @@ public class FastDfsApplication {
         SpringApplication.run(FastDfsApplication.class, args);
     }
 
-    // 上传文件到临时文件夹下  已天为文件夹分隔
-    SimpleDateFormat sdf = new SimpleDateFormat("/yyyy/MM/dd/");
-    @PostMapping("/import")
-    public String importData(MultipartFile file, HttpServletRequest req) throws IOException {
-        String format = sdf.format(new Date());
-        String realPath = req.getServletContext().getRealPath("/upload") + format;
-        File folder = new File(realPath);
-        if (!folder.exists()) {
-            folder.mkdirs();
-        }
-        String oldName = file.getOriginalFilename();
-        String newName = UUID.randomUUID().toString() + oldName.substring(oldName.lastIndexOf("."));
-        file.transferTo(new File(folder,newName));
-        String url = req.getScheme() + "://" + req.getServerName() + ":" + req.getServerPort() + "/upload" + format + newName;
-        System.out.println(url);
-        return "上传成功!";
-    }
+
 
 }

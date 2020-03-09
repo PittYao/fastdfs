@@ -20,11 +20,6 @@ class FastDfsApplicationTests {
     void contextLoads() {
     }
 
-   @Test
-   public void test(){
-       System.out.println(1);
-   }
-
     // 上传文件
     @Test
     public void testUpload2dfs() throws IOException, MyException {
@@ -64,12 +59,12 @@ class FastDfsApplicationTests {
     }
 
     // 生成token,用于在访问文件时使用token，无token不能访问
-    // eg: http://139.129.102.22/group1/M00/00/00/i4FmFl5ht5-EIcyhAAAAAAAnkuA594.jpg?token=a251aaa62a336a7e03c5d6cdcc552435&ts=1583475385
+    // eg: http://139.129.102.22/group1/M00/00/00/i4FmFl5ht5-EIcyhAAAAAAAnkuA594.jpg?token=451781de005cc456b0d041429d5a2bff&ts=1583731433
     @Test
     public void testGetToken() throws UnsupportedEncodingException, NoSuchAlgorithmException, MyException {
         int ts = (int) Instant.now().getEpochSecond();
         // 文件id,时间戳,fastDfs的密钥
-        String token = ProtoCommon.getToken("M00/00/00/i4FmFl5ht5-EIcyhAAAAAAAnkuA594.jpg", ts, "FastDFS1234567890");
+        String token = ProtoCommon.getToken("M00/00/00/i4FmFl5l0gmENW7MAAAAAPOGgrs104.jpg", ts, "FastDFS1234567890");
         StringBuilder sb = new StringBuilder();
         sb.append("?token=").append(token);
         sb.append("&ts=").append(ts);
